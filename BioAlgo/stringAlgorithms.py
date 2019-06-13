@@ -1,4 +1,6 @@
-from typing import List, Dict
+"""Collection of algorithms that operate on strings of text -- mainly for counting k-mers
+"""
+from typing import Set
 from itertools import product
 
 
@@ -19,7 +21,7 @@ def pattern_count(text: str, pattern: str) -> int:
     return count
 
 
-def frequent_words(text: str, k: int) -> List[str]:
+def frequent_words(text: str, k: int) -> Set[str]:
     """Find the most frequent kmers of size k in the given text
     
     Arguments:
@@ -27,7 +29,7 @@ def frequent_words(text: str, k: int) -> List[str]:
         k {int} -- size of k-mer
     
     Returns:
-        List[str] -- List of most frequent k-mers found in text
+        Set[str] -- Set of most frequent k-mers found in text
     """
     frequent_patterns = set()
     counts = []
@@ -42,10 +44,10 @@ def frequent_words(text: str, k: int) -> List[str]:
         if counts[i] == max_count:
             frequent_patterns.add(text[i:i+k])
     
-    return list(frequent_patterns)
+    return frequent_patterns
 
 
-def fast_frequent_words(text: str, k: int) -> List[str]:
+def fast_frequent_words(text: str, k: int) -> Set[str]:
     """Find the most frequent kmers of size k in the given text looping
     through text only once.
     
@@ -54,9 +56,9 @@ def fast_frequent_words(text: str, k: int) -> List[str]:
         k {int} -- k-mer size
     
     Returns:
-        Dict[str, int] 
+        Set[str] -- most frequent k-mers in text
     """
-    frequent_patterns = []
+    frequent_patterns = set()
     kmers = list(product("ACGT", repeat=k))
     freq_dict = {"".join(m):0 for m in kmers}
 
@@ -68,7 +70,7 @@ def fast_frequent_words(text: str, k: int) -> List[str]:
 
     for k in freq_dict:
         if freq_dict[k] == max_count:
-            frequent_patterns.append(k)
+            frequent_patterns.add(k)
 
     return frequent_patterns
 
@@ -115,3 +117,38 @@ def number_to_pattern(index: int, k: int) -> str:
     prefix_pattern = number_to_pattern(prefix_index, k-1)
 
     return prefix_pattern + symbol
+
+
+def sorted_frequent_words(text: str, k: int) -> Set[str]:
+    """Find the most frequent kmers of size k in the given text by
+    sorting
+    
+    Arguments:
+        text {str} -- text to search
+        k {int} -- k-mer size
+    
+    Returns:
+        Set[str] -- most frequent k-mers in text
+    """
+    frequent_patterns = set()
+    index = []
+    count = []
+    for i in range(len(text) - k):
+        pattern = text[i:i+k]
+        index.append(pattern_to_number(pattern))
+        count.append(1)
+
+    sorted_index = sorted(index)
+
+    for i in range(1, len(text) - k):
+        if sorted_index[i] == sorted_index[i-1]:
+            count[i] = count[i-1] + 1
+
+    max_count = max(count)
+
+    for i in range(len(text) - k):
+        if count[i] == max_count:
+            pattern = number_to_pattern(sorted_index[i], k)
+            frequent_patterns.add(pattern)
+
+    return frequent_patterns
