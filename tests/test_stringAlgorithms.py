@@ -28,3 +28,6 @@ def test_number_to_pattern_pythonic():
 def test_sorted_frequent_words():
     assert stringAlgorithms.sorted_frequent_words("ACAACTATGCATACTATCGGGAACTATCCT", 5) == {'ACTAT'}
 
+def test_reverse_complement():
+    assert stringAlgorithms.reverse_complement("AGTCGCATAGT") == "ACTATGCGACT"
+

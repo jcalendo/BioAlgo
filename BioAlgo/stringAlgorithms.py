@@ -4,6 +4,20 @@ from typing import Set
 from itertools import product
 
 
+def reverse_complement(pattern: str) -> str:
+    """Return the reverse complement of the input pattern
+    
+    Arguments:
+        pattern {str} -- DNA string
+    
+    Returns:
+        str -- Reverse complement
+    """
+    transtab = {"A":"T", "C":"G", "G":"C", "T":"A"}
+
+    return "".join(transtab[b] for b in pattern[::-1].upper())
+
+
 def pattern_count(text: str, pattern: str) -> int:
     """Count the number of occurences of a pattern within text
     
