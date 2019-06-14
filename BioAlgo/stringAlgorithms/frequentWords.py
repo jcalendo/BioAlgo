@@ -1,9 +1,9 @@
 from typing import Set
 from itertools import product
 
-from patternCount import pattern_count
-from patternToNumber import pattern_to_number
-from numberToPattern import number_to_pattern
+from .patternCount import pattern_count
+from .patternToNumber import pattern_to_number
+from .numberToPattern import number_to_pattern
 
 
 def sorted_frequent_words(text: str, k: int) -> Set[str]:
