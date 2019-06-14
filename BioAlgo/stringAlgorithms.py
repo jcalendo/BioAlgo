@@ -84,7 +84,7 @@ def pattern_to_number(pattern: str) -> int:
     Returns:
         int -- numerical representation of pattern
     """
-    symbol_dict = {"A":0, "C":1, "G":2, "T":3}
+    symbols = {"A" : 0, "C" : 1, "G" : 2, "T" : 3}
 
     if not pattern:
         return 0
@@ -92,7 +92,22 @@ def pattern_to_number(pattern: str) -> int:
     symbol = pattern.upper()[-1]
     prefix = pattern.upper()[:-1]
 
-    return 4 * pattern_to_number(prefix) +  symbol_dict.get(symbol)
+    return 4 * pattern_to_number(prefix) +  symbols.get(symbol)
+
+
+def pattern_to_number_pythonic(pattern: str) -> int:
+    """Transform a k-mer into an interger using itertools product
+    
+    Arguments:
+        pattern {str} -- text pattern to convert
+    
+    Returns:
+        int -- numerical representation of pattern
+    """
+    k = len(pattern)
+    patterns = ["".join(p) for p in list(product("ACGT", repeat=k))]
+
+    return patterns.index(pattern)
 
 
 def number_to_pattern(index: int, k: int) -> str:
@@ -117,6 +132,20 @@ def number_to_pattern(index: int, k: int) -> str:
     prefix_pattern = number_to_pattern(prefix_index, k-1)
 
     return prefix_pattern + symbol
+
+
+def number_to_pattern_pythonic(index: int, k: int) -> str:
+    """Convert a number to its pattern representation using itertools 
+    cartesian product
+    
+    Arguments:
+        index {int} -- integer to convert to pattern
+        k {int} -- size of pattern
+
+    Returns:
+        str -- pattern
+    """
+    return "".join(list(product("ACGT", repeat=k))[index])
 
 
 def sorted_frequent_words(text: str, k: int) -> Set[str]:
