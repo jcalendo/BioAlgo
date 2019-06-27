@@ -2,7 +2,7 @@
 Testing the functions in the strings module
 """
 import pytest
-from BioAlgo.strings import convert, count, transform, words
+from bioalgo.strings import convert, count, transform, words
 
 
 def test_pattern_count():
