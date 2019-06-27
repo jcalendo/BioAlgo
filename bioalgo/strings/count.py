@@ -51,7 +51,7 @@ def gc_content(text: str) -> float:
     Returns:
         float -- GC content rounded to 5 decimal places
     """
-    counts = Counter(text)
+    counts = Counter(text.upper())
     gc_count = int(counts['G'] + counts['C'])
     gc_content = round(gc_count / len(text) * 100, 5)
 
@@ -68,3 +68,24 @@ def nucleotides(text: str) -> Dict[str, int]:
         Dict[str, int] -- Counts of nucleotides within text
     """ 
     return dict(Counter(text.upper()))
+
+
+def hamming_distance(str_1: str, str_2: str) -> int:
+    """Return the hamming distance between two strings od equal length
+    
+    Arguments:
+        str_1 {str} -- first string
+        str_2 {str} -- second string
+    
+    Returns:
+        int -- hamming distance
+    """
+    if len(str_1) != len(str_2):
+        raise ValueError("Strings must be the same length")
+
+    count = 0
+    for i in str_1:
+        if str_1[i] != str_2[i]:
+            count += 1
+        
+    return count
