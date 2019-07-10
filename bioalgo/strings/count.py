@@ -84,7 +84,7 @@ def hamming_distance(str_1: str, str_2: str) -> int:
         raise ValueError("Strings must be the same length")
 
     count = 0
-    for i in str_1:
+    for i in range(len(str_1)):
         if str_1[i] != str_2[i]:
             count += 1
         

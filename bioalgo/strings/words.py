@@ -141,11 +141,8 @@ def find_clumps(genome: str, k: int, t: int, L: int) -> Set[str]:
 
     for i in range(1, genome - L):
         first_pattern = genome[i-1:i-1+k]
-        freq_dict[first_pattern] = freq_dict[first_pattern] -= 1
+        freq_dict[first_pattern] = freq_dict[first_pattern] - 1
         last_pattern = genome[i+L-k:i+L]
-        freq_dict[last_pattern] = freq_dict[last_pattern] += 1
+        freq_dict[last_pattern] = freq_dict[last_pattern] + 1
 
-        
-        
-
-find_clumps("ACACACACACACACACACACACAGCGCGCGCGCGCGCGCGCGCTATATATATATATATATATATA", 2, 6, 30)
+    pass
