@@ -48,3 +48,9 @@ def test_number_to_pattern():
 
 def test_number_to_pattern_pythonic():
     assert convert.number_to_pattern_pythonic(9904, 7) == "GCGGTAA"
+    
+def test_compress_DNA():
+    assert convert.compress_DNA("ACGT") == 283
+
+def test_decompress_DNA_bit_string():
+    assert convert.decompress_DNA_bit_string(283) == "ACGT"

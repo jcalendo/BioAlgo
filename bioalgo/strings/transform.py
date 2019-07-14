@@ -70,4 +70,3 @@ def translate(text: str) -> str:
 
     # remove 'Stop' codon from final string if present
     return prot[:-4] if prot[-4:] == 'Stop' else prot
-

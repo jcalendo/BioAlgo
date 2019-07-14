@@ -4,9 +4,9 @@ Module for identifying frequent patterns within a given text
 from typing import Set, Dict
 from itertools import product
 
-from count import pattern_count
-from convert import pattern_to_number
-from convert import number_to_pattern
+from .count import pattern_count
+from .convert import pattern_to_number
+from .convert import number_to_pattern
 
 
 def sorted_frequent_words(text: str, k: int) -> Set[str]:
