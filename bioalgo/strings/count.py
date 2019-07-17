@@ -15,7 +15,7 @@ def pattern_count(text: str, pattern: str) -> int:
     count  = 0
     pattern_size = len(pattern)
 
-    for i in range(len(text) - pattern_size):
+    for i in range(len(text) - pattern_size + 1):
         if text[i:i+pattern_size] == pattern:
             count += 1
     
@@ -35,7 +35,7 @@ def pattern_index(text: str, pattern: str) -> int:
     indeces = []
     pattern_size = len(pattern)
 
-    for i in range(len(text) - pattern_size):
+    for i in range(len(text) - pattern_size + 1):
         if text[i:i+pattern_size] == pattern:
             indeces.append(i+1)
     

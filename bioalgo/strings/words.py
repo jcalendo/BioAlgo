@@ -23,20 +23,20 @@ def sorted_frequent_words(text: str, k: int) -> Set[str]:
     frequent_patterns = set()
     index = []
     count = []
-    for i in range(len(text) - k):
+    for i in range(len(text) - k + 1):
         pattern = text[i:i+k]
         index.append(pattern_to_number(pattern))
         count.append(1)
 
     sorted_index = sorted(index)
 
-    for i in range(1, len(text) - k):
+    for i in range(1, len(text) - k + 1):
         if sorted_index[i] == sorted_index[i-1]:
             count[i] = count[i-1] + 1
 
     max_count = max(count)
 
-    for i in range(len(text) - k):
+    for i in range(len(text) - k + 1):
         if count[i] == max_count:
             pattern = number_to_pattern(sorted_index[i], k)
             frequent_patterns.add(pattern)
@@ -59,7 +59,7 @@ def fast_frequent_words(text: str, k: int) -> Set[str]:
     kmers = list(product("ACGT", repeat=k))
     freq_dict = {"".join(m):0 for m in kmers}
 
-    for i in range(len(text) - k):
+    for i in range(len(text) - k + 1):
         pattern = text[i:i+k]
         freq_dict[pattern] += 1
 
@@ -85,13 +85,13 @@ def frequent_words(text: str, k: int) -> Set[str]:
     frequent_patterns = set()
     counts = []
 
-    for i in range(len(text) - k):
+    for i in range(len(text) - k + 1):
         pattern = text[i:i+k]
         counts.append(pattern_count(text, pattern))
 
     max_count = max(counts)
 
-    for i in range(len(text) - k):
+    for i in range(len(text) - k + 1):
         if counts[i] == max_count:
             frequent_patterns.add(text[i:i+k])
     
@@ -109,7 +109,7 @@ def compute_frequencies(text: str, k: int) -> Dict[str, int]:
         Dict[str, int] -- dictionary of k-mers and their count within text
     """
     frequency_dict = {}
-    for i in range(len(text) - k):
+    for i in range(len(text) - k + 1):
         pattern = text[i:i+k]
         frequency_dict[pattern] = frequency_dict.get(pattern, 0) + 1
 
