@@ -1,5 +1,5 @@
 """
-Module for converting numbers to patterns and vice versa
+Module for converting DNA strings 
 """
 from itertools import product
 from typing import List
