@@ -143,7 +143,7 @@ def imediate_neighbors(pattern: str) -> List[str]:
     Returns:
         List[str] -- 1-neighborhood list of pattern
     """
-    neighbors = []
+    neighbors = [pattern]
     bases = ["A", "C", "G", "T"]
     for i in range(len(pattern)):
         symbol = pattern[i]
@@ -154,3 +154,5 @@ def imediate_neighbors(pattern: str) -> List[str]:
                 neighbors.append("".join(pattern_list))
 
     return neighbors
+
+print(imediate_neighbors("CAA"))
