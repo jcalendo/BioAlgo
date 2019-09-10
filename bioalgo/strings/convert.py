@@ -15,6 +15,11 @@ def number_to_pattern_pythonic(index: int, k: int) -> str:
 
     Returns:
         str -- pattern
+    
+    Example:
+    >>> number_to_pattern_pythonic(9904, 7)
+    'GCGGTAA'
+
     """
     return "".join(list(product("ACGT", repeat=k))[index])
 
@@ -28,6 +33,11 @@ def number_to_pattern(index: int, k: int) -> str:
 
     Returns:
         str -- pattern
+
+    Example:
+    >>> number_to_pattern(11, 3)
+    'AGT'
+
     """
     symbols = ["A", "C", "G", "T"]
 
@@ -51,6 +61,11 @@ def pattern_to_number_pythonic(pattern: str) -> int:
     
     Returns:
         int -- numerical representation of pattern
+
+    Example:
+    >>> pattern_to_number_pythonic("GCGGTAA")
+    9904
+    
     """
     if not pattern:
         return 0
@@ -69,6 +84,11 @@ def pattern_to_number(pattern: str) -> int:
     
     Returns:
         int -- numerical representation of pattern
+
+    Example:
+    >>> pattern_to_number("AGT")
+    11
+    
     """
     if not pattern:
         return 0
@@ -88,6 +108,11 @@ def compress_DNA(text: str) -> int:
     
     Returns:
         int -- integer bit-string representing DNA
+
+    Example:
+    >>> compress_DNA("ACGT")
+    283
+    
     """
 
     bit_string = 1
@@ -116,6 +141,11 @@ def decompress_DNA_bit_string(bit_string: int) -> str:
     
     Returns:
         str -- DNA text string
+
+    Example:
+    >>> decompress_DNA_bit_string(283)
+    'ACGT'
+    
     """
     dna_string = ""
     for i in range(0, bit_string.bit_length() - 1, 2):  # minus 1 excludes '1' sentinel value from compress_DNA
@@ -142,6 +172,11 @@ def imediate_neighbors(pattern: str) -> List[str]:
 
     Returns:
         List[str] -- 1-neighborhood list of pattern
+
+    Example:
+    >>> imediate_neighbors("CAA")
+    ['CAA', 'AAA', 'GAA', 'TAA', 'CCA', 'CGA', 'CTA', 'CAC', 'CAG', 'CAT']
+    
     """
     neighbors = [pattern]
     bases = ["A", "C", "G", "T"]
@@ -154,5 +189,3 @@ def imediate_neighbors(pattern: str) -> List[str]:
                 neighbors.append("".join(pattern_list))
 
     return neighbors
-
-print(imediate_neighbors("CAA"))

@@ -11,6 +11,11 @@ def reverse_complement(pattern: str) -> str:
     
     Returns:
         str -- Reverse complement
+
+    Example:
+    >>> reverse_complement("AGTCGCATAGT")
+    'ACTATGCGACT'
+
     """
     transtab = {"A":"T", "C":"G", "G":"C", "T":"A"}
 

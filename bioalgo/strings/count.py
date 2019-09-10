@@ -1,7 +1,7 @@
 """
 Module for counting the occurences of patterns within a given text
 """
-from typing import Dict
+from typing import Dict, List
 from collections import Counter
 
 
@@ -11,6 +11,14 @@ def pattern_count(text: str, pattern: str) -> int:
     Arguments:
         text {str} -- text to count pattern in
         pattern {str} -- pattern to be counted within text
+
+    Returns:
+        int -- The number of occurences of pattern in the test
+
+    Example:
+    >>> pattern_count("ACAACTATGCATACTATCGGGAACTATCCT", "ACTAT")
+    3
+
     """
     count  = 0
     pattern_size = len(pattern)
@@ -22,7 +30,7 @@ def pattern_count(text: str, pattern: str) -> int:
     return count
 
 
-def pattern_index(text: str, pattern: str) -> int:
+def pattern_index(text: str, pattern: str) -> List[int]:
     """Return the indeces (1-based) of a pattern within text
     
     Arguments:
@@ -31,6 +39,11 @@ def pattern_index(text: str, pattern: str) -> int:
     
     Returns:
         int -- index location of pattern in text
+
+    Example:
+    >>> pattern_index("ACAACTATGCATACTATCGGGAACTATCCT", "TAT")
+    [6, 15, 25]
+    
     """
     indeces = []
     pattern_size = len(pattern)
@@ -50,6 +63,11 @@ def gc_content(text: str) -> float:
     
     Returns:
         float -- GC content rounded to 5 decimal places
+
+    Example:
+    >>> gc_content("ACAACTATGCATACTATCGGGAACTATCCT")
+    40.0
+    
     """
     counts = Counter(text.upper())
     gc_count = int(counts['G'] + counts['C'])
@@ -66,6 +84,11 @@ def nucleotides(text: str) -> Dict[str, int]:
     
     Returns:
         Dict[str, int] -- Counts of nucleotides within text
+
+    Example:
+    >>> nucleotides("ACAACTATGCATACTATCGGGAACTATCCT")
+    {'A': 10, 'C': 8, 'T': 8, 'G': 4}
+    
     """ 
     return dict(Counter(text.upper()))
 
@@ -79,6 +102,11 @@ def hamming_distance(str_1: str, str_2: str) -> int:
     
     Returns:
         int -- hamming distance
+
+    Example:
+    >>> hamming_distance("ATATACATACGCGCGC", "ATATATATGCGCGCGC")
+    2
+    
     """
     if len(str_1) != len(str_2):
         raise ValueError("Strings must be the same length")

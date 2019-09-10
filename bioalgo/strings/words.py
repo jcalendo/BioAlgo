@@ -18,6 +18,11 @@ def sorted_frequent_words(text: str, k: int) -> Set[str]:
     
     Returns:
         Set[str] -- most frequent k-mers in text
+
+    Example:
+    >>> sorted_frequent_words("ACAACTATGCATACTATCGGGAACTATCCT", 5)
+    {'ACTAT'}
+    
     """
     frequent_patterns = set()
     index = []
@@ -53,6 +58,11 @@ def fast_frequent_words(text: str, k: int) -> Set[str]:
     
     Returns:
         Set[str] -- most frequent k-mers in text
+
+    Example:
+    >>> "ACAACTATGCATACTATCGGGAACTATCCT", 5)
+    {'ACTAT'}
+    
     """
     frequent_patterns = set()
     kmers = list(product("ACGT", repeat=k))
@@ -80,6 +90,11 @@ def frequent_words(text: str, k: int) -> Set[str]:
     
     Returns:
         Set[str] -- Set of most frequent k-mers found in text
+    
+    Example:
+    >>> frequent_words("ACAACTATGCATACTATCGGGAACTATCCT", 5)
+    {'ACTAT'}
+    
     """
     frequent_patterns = set()
     counts = []
@@ -106,6 +121,11 @@ def compute_frequencies(text: str, k: int) -> Dict[str, int]:
     
     Returns:
         Dict[str, int] -- dictionary of k-mers and their count within text
+
+    Example:
+    >>> compute_frequencies("ACGT")
+    {'AC': 1, 'CG': 1, 'GT': 1}
+    
     """
     frequency_dict = {}
     for i in range(len(text) - k + 1):
@@ -114,34 +134,4 @@ def compute_frequencies(text: str, k: int) -> Dict[str, int]:
 
     return frequency_dict
 
-
-def find_clumps(genome: str, k: int, t: int, L: int) -> Set[str]:
-    """Return frequent k-mer patterns in genome using a clumps finding
-    algorithm. Slide a window of fixed length L along genome, looking
-    for regions where a k-mer appears t or more times in the given region.
-    
-    Arguments:
-        genome {str} -- text to search
-        k {int} -- k-mer length
-        t {int} -- size of the clumps
-        L {int} -- window size
-
-    Returns:
-        Set[str] -- [description]
-    """
-    frequent_patterns = set()
-    clumps = {}
-
-    text = genome[0:L]
-    freq_dict = compute_frequencies(text, k)
-    for k, v in freq_dict.items():
-        if v >= t:
-            clumps[k] = clumps.get(k, 0) + 1
-
-    for i in range(1, genome - L):
-        first_pattern = genome[i-1:i-1+k]
-        freq_dict[first_pattern] = freq_dict[first_pattern] - 1
-        last_pattern = genome[i+L-k:i+L]
-        freq_dict[last_pattern] = freq_dict[last_pattern] + 1
-
-    pass
+print(compute_frequencies("ACGT", 2))
