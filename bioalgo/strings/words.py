@@ -60,7 +60,7 @@ def fast_frequent_words(text: str, k: int) -> Set[str]:
         Set[str] -- most frequent k-mers in text
 
     Example:
-    >>> "ACAACTATGCATACTATCGGGAACTATCCT", 5)
+    >>> fast_frequent_words("ACAACTATGCATACTATCGGGAACTATCCT", 5)
     {'ACTAT'}
     
     """
@@ -123,7 +123,7 @@ def compute_frequencies(text: str, k: int) -> Dict[str, int]:
         Dict[str, int] -- dictionary of k-mers and their count within text
 
     Example:
-    >>> compute_frequencies("ACGT")
+    >>> compute_frequencies("ACGT", 2)
     {'AC': 1, 'CG': 1, 'GT': 1}
     
     """
@@ -133,5 +133,3 @@ def compute_frequencies(text: str, k: int) -> Dict[str, int]:
         frequency_dict[pattern] = frequency_dict.get(pattern, 0) + 1
 
     return frequency_dict
-
-print(compute_frequencies("ACGT", 2))
