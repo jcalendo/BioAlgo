@@ -10,7 +10,7 @@ def random_DNA(n: int = 10, length: int = 100) -> List[str]:
     
     Keyword Arguments:
         n {int} -- number of strings to randomly generate (default: {10})
-        length {int} -- length of each randomly generated string (default: {600})
+        length {int} -- length of each randomly generated string (default: {100})
     
     Returns:
         List[str] -- list of randomly generated DNA strings
