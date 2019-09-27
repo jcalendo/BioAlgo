@@ -5,7 +5,7 @@ import random
 from typing import List
 
 
-def random_DNA(n: int = 10, length: int = 10) -> List[str]:
+def random_DNA(n: int = 10, length: int = 100) -> List[str]:
     """Generate n DNA strings of length l
     
     Keyword Arguments:
@@ -17,7 +17,7 @@ def random_DNA(n: int = 10, length: int = 10) -> List[str]:
     
     Example:
     >>> random.seed(123)
-    >>> random_DNA(1, 10)
+    >>> random_DNA(2, 10)
     ['AGATGAATGG', 'ACCGGCCATA']
 
     """
@@ -59,7 +59,7 @@ def mutate(text: str, n: int) -> str:
 
 
 def insert_kmer(text: List[str], kmer: str, mutations: int = 0) -> List[str]:
-    """Randomly insert the given kmer with n mutations into the list of DNA strings. 
+    """Randomly insert the given kmer with n mutations into each string in the list of DNA strings. 
     Preserve the length of the original text. 
     
     Arguments:
