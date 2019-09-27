@@ -27,7 +27,6 @@ def random_DNA(n: int = 10, length: int = 10) -> List[str]:
 
 def mutate(text: str, n: int) -> str:
     """Mutate a string text n times
-            text {str} -- [description]
 
     Arguments:
         text {str} -- the string to mutate
