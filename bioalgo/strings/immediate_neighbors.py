@@ -1,3 +1,6 @@
+from typing import List
+
+
 def immediate_neighbors(pattern: str) -> List[str]:
     """Generate a list of neightbors whose hamming distance is 1 from the pattern
     
