@@ -19,7 +19,9 @@ def neighbors(pattern: str, d: int) -> Set:
     
     """
     if d == 0:
-        return set(pattern)
+        res = set()
+        res.add(pattern)
+        return res
 
     if len(pattern) == 1:
         return(set(['A', 'C', 'G', 'T']))
