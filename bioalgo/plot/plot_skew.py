@@ -2,7 +2,7 @@ from typing import List
 
 import matplotlib.pyplot as plt
 
-from strings import compute_skew
+from bioalgo.strings.compute_skew import compute_skew
 
 
 

@@ -1,5 +1,6 @@
 from typing import Set
-from pattern_count import pattern_count
+
+from bioalgo.strings.pattern_count import pattern_count
 
 
 def frequent_words(text: str, k: int) -> Set[str]:

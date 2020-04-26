@@ -1,7 +1,7 @@
 from typing import Set
 
-from number_to_pattern import number_to_pattern
-from pattern_to_number import pattern_to_number
+from bioalgo.strings.number_to_pattern import number_to_pattern
+from bioalgo.strings.pattern_to_number import pattern_to_number
 
 
 def sorted_frequent_words(text: str, k: int) -> Set[str]:

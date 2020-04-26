@@ -1,4 +1,4 @@
-from typinf import List
+from typing import List
 
 
 def insert_kmer(text: List[str], kmer: str, mutations: int = 0) -> List[str]:
