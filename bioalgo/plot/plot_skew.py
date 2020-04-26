@@ -1,20 +1,18 @@
-"""
-Module for visualizing data
-"""
 from typing import List
 
 import matplotlib.pyplot as plt
 
-from bioalgo.strings import count
+from strings import compute_skew
 
 
-def skew(sequence: str):
+
+def plot_skew(sequence: str):
     """Plot the skew diagram for the given sequence
     
     Arguments:
         sequence {str} -- DNA sequence
     """
-    skew_list = count.compute_skew(sequence)
+    skew_list = compute_skew.compute_skew(sequence)
     positions = [x for x in range(len(sequence))]
 
     # plot the skew
